@@ -1,0 +1,93 @@
+@import url('./variables.css');
+
+main {
+  display: flex;
+}
+
+aside {
+  display: flex;
+  flex-direction: column;
+  width: 413px;
+  border-right: 5px solid black;
+  padding: 3rem 1.5rem;
+  padding-bottom: 0;
+}
+
+aside::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2%;
+  background: var(--color-primary);
+  z-index: -1;
+}
+
+aside h1 {
+  font-family: var(--Poppins-Bold);
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  margin-bottom: 3rem;
+}
+
+.monkey-cont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.monkey-cont p {
+  font-size: 4rem;
+  color: var(--color-primary);
+}
+
+.monkey-open-eyes,
+.monkey-close-eyes {
+  display: none;
+}
+
+.monkey-close-eyes.active {
+  display: block;
+}
+
+.monkey-open-eyes.active {
+  display: block;
+}
+
+.inputs-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.inputs {
+  position: relative;
+}
+
+input[type="text"],
+input[type="password"] {
+  padding: 0.7rem;
+  width: 100%;
+}
+
+label:not(.remember-me-label) {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+}
+
+.remember-me {
+  display: flex;
+  gap: 5px;
+}
+
+section {
+  background: red;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
