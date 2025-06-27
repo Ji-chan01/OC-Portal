@@ -2,15 +2,23 @@
 
 main {
   display: flex;
+  height: 100vh;
+  overflow: hidden;
 }
 
 aside {
+  width: 413px;
+  border-right: 1px solid black;
+  height: 100vh;
+}
+
+form {
   display: flex;
   flex-direction: column;
   width: 413px;
-  border-right: 5px solid black;
   padding: 3rem 1.5rem;
-  padding-bottom: 0;
+  padding-bottom: 1rem;
+  height: 100%;
 }
 
 aside::before {
@@ -35,7 +43,7 @@ aside h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1rem;
+  
 }
 
 .monkey-cont p {
@@ -59,18 +67,34 @@ aside h1 {
 .inputs-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 100%;
+  font-family: var(--Poppins-Regular);
+  padding: 0 1rem;
 }
 
 .inputs {
   position: relative;
+  width: 100%;
+}
+
+.inputs-cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 input[type="text"],
 input[type="password"] {
-  padding: 0.7rem;
+  padding: 0.7rem 1rem;
   width: 100%;
+  border-radius: 5px;
+  border: 1px solid var(--color-primary);
+  transition: all 0.15s ease;
+  font-size: 1.3rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-transform: uppercase;
+  color: var(--color-input-text);
 }
 
 label:not(.remember-me-label) {
@@ -78,11 +102,70 @@ label:not(.remember-me-label) {
   top: 50%;
   left: 15px;
   transform: translateY(-50%);
+  padding: 0 0.2rem;
+  background: white;
+  color: var(--color-white-shadow);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  font-size: 1.1rem;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+  outline: none;
+  box-shadow: 0 0 0.2rem var(--color-primary);
+  border: 1px solid transparent;
+}
+
+input:focus + label:not(.remember-me-label),
+.inputs input:not(:placeholder-shown) + label:not(.remember-me-label) {
+  top: 0;
+  left: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--color-primary);
 }
 
 .remember-me {
   display: flex;
   gap: 5px;
+  margin-top: 5px;
+  padding: 0;
+}
+
+input[type="checkbox"] {
+  cursor: pointer;
+  outline: none;
+}
+
+.remember-me-label {
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+button {
+  margin-top: 1.5rem;
+  width: 100%;
+  align-self: center;
+  padding: 0.8rem 1rem;
+  font-family: var(--Poppins-Regular);
+  font-size: 1rem;
+  letter-spacing: 1px;
+  background: var(--color-primary);
+  border: 1px solid transparent;
+  cursor: pointer;
+  color: white;
+  border-radius: 10px;
+}
+
+button:hover {
+  background: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  box-shadow: 0 0 0.2rem var(--color-primary);
+}
+
+a {
+  color: var(--color-primary);
+  font-size: 0.8rem;
 }
 
 section {
@@ -90,4 +173,20 @@ section {
   display: flex;
   flex-direction: column;
   width: 60%;
+}
+
+.footer {
+  color: var(--color-white-shadow);
+  font-family: var(--Poppins-Regular);
+  font-size: 0.7rem;
+  margin-top: auto;
+  text-align: center;
+}
+
+section {
+  position: relative;
+}
+
+.hero {
+  position: absolute;
 }

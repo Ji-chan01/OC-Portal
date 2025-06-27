@@ -11,37 +11,39 @@
 <body>
   <main>
     <aside>
-      <div class="header">
-        <h1>Greetings!</h1>
-      </div>
-      <div class="inputs-container">
-        <div class="monkey-cont">
-          <p class="monkey-open-eyes active">🐵</p>
-          <p class="monkey-close-eyes">🙈</p>
+      <form action="">
+        <div class="header">
+          <h1>Greetings!</h1>
         </div>
-        <div class="inputs-cont">
-          <div class="inputs">
-            <label for="">Student ID</label>
-            <input type="text">
+        <div class="inputs-container">
+          <div class="monkey-cont">
+            <p class="monkey-open-eyes active">🐵</p>
+            <p class="monkey-close-eyes">🙈</p>
           </div>
-          <div class="inputs">
-            <label for="">Password</label>
-            <input type="password">
+          <div class="inputs-cont">
+            <div class="inputs">
+              <input type="text" id="student-id" required placeholder=" " />
+              <label for="student-id">Student ID</label>
+            </div>
+            <div class="inputs">
+              <input type="password" id="password" required placeholder=" " />
+              <label for="password">Password</label>
+            </div>
+          </div>
+          <div class="remember-me">
+            <input id="remember-me" type="checkbox">
+            <label class="remember-me-label" for="remember-me">Remember me</label>
+          </div>
+          <button>Login</button>
+          <div class="forgot-password">
+            <a href="#">Forgot Password?</a>
           </div>
         </div>
-        <div class="remember-me">
-          <input id="remember-me" type="checkbox">
-          <label class="remember-me-label" for="remember-me">Remember me</label>
+  
+        <div class="footer">
+         <p>© 2025 Osmeña Colleges. All rights reserved.</p> 
         </div>
-      </div>
-      <button>Login</button>
-      <div class="forgot-password">
-        <a href="#">Forgot Password?</a>
-      </div>
-
-      <div class="footer">
-       <p>© 2025 Osmeña Colleges. All rights reserved.</p> 
-      </div>
+      </form>
     </aside>
     <section>
       <div class="hero">
