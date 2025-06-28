@@ -1,0 +1,5 @@
+search - filter(name, id)
+add section, add org, add subj
+total number of stud, add student, section, id, subj.
+org, officers
+clubs

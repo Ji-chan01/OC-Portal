@@ -18,6 +18,14 @@
   font-family: 'Poppins-Regular';
   src: url(./fonts/Poppins/Poppins-Regular.ttf);
 }
+@font-face {
+  font-family: 'Montserrat';
+  src: url(./fonts/Montserrat/Montserrat-VariableFont_wght.ttf);
+}
+@font-face {
+  font-family: 'DancingScript-Regular';
+  src: url(./fonts/DancingScript/static/DancingScript-Regular.ttf);
+}
 
 :root {
   /* FONTS */
@@ -26,9 +34,14 @@
   --Poppins-ExtraBold: 'Poppins-ExtraBold';
   --Poppins-ExtraLight: 'Poppins-ExtraLight';
   --Poppins-Regular: 'Poppins-Regular'; 
+  --Montserrat: 'Montserrat';
+  --DancingScript-Regular: 'DancingScript-Regular';
 
   /* COLORS */
   --color-primary: #690f0f;
   --color-white-shadow: #7E7E7D;
   --color-input-text: #545454;
+  --color-light-coffee: #EFC3A4;
+  --color-dark-coffee: #4B1F0E;
+  --color-beige: #9e7d74;
 }
