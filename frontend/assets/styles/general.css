@@ -17,3 +17,18 @@ h1, h2, h3, p {
   object-fit: cover;
   object-position: center;
 }
+
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 10px;
+}
+

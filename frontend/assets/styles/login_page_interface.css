@@ -9,7 +9,7 @@ main {
 aside {
   position: relative;
   width: 413px;
-  box-shadow: 0 0 1rem white;
+  box-shadow: 0 0 1rem var(--color-white);
   height: 100vh;
   z-index: 1000;
 }
@@ -89,7 +89,7 @@ aside h1 {
   color: var(--color-white-shadow);
   padding: 1rem 0.58rem;
   z-index: 100;
-  background:white;
+  background:var(--color-white);
 }
 
 .inputs i.active {
@@ -134,7 +134,7 @@ label:not(.remember-me-label) {
   left: 15px;
   transform: translateY(-50%);
   padding: 0 0.2rem;
-  background: white;
+  background: var(--color-white);
   color: var(--color-white-shadow);
   transition: all 0.3s ease;
   pointer-events: none;
@@ -183,7 +183,7 @@ button {
   background: var(--color-primary);
   border: 1px solid transparent;
   cursor: pointer;
-  color: white;
+  color: var(--color-white);
   border-radius: 10px;
 }
 
@@ -235,17 +235,14 @@ section {
   top: 20%;
   left: 0;
   transform: translateY(-50%);
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  /* box-shadow: 0 0 0.5rem black; */
   z-index: 2;
 }
 
 .photo-cont {
-  background: white;
+  background: var(--color-white);
   border-radius: 50%;
   width: 20px;
   height: 20px;
@@ -258,21 +255,19 @@ section {
 .body {
   display: flex;
   flex-direction: column;
-  /* padding: 0 1rem; */
   position: relative;
   opacity: 1;
 }
 
 .body h1 {
-  color: white;
+  color: var(--color-white);
   font-family: var(--Montserrat);
   font-size: 5rem;
   margin-bottom: 1rem;
   z-index: 100;
-  backdrop-filter: blur(5px);
-  padding: 0 1rem;
+  backdrop-filter: blur(8px);
+  padding: 1rem;
 }
-
 
 .body .bot {
   display: flex;
@@ -280,7 +275,7 @@ section {
 }
 
 .body .bot p {
-  color: white;
+  color: var(--color-coffee);
   font-family: var(--Poppins-Regular);
   z-index: 100;
   padding-left: 0.4rem;
@@ -289,14 +284,14 @@ section {
 .body .img-cont {
   height: 15px;
   width: 15px;
-  background: white;
+  background: var(--color-white);
   border-radius: 50%;
   z-index: 100;
   margin-left: 1rem;
 }
 
 .body span {
-  color: var(--color-primary);
+  color: var(--color-white);
 }
 
 
@@ -317,5 +312,5 @@ section {
   left: 2%;
   font-size: 2rem;
   font-family: var(--DancingScript-Regular);
-  color: white;
+  color: var(--color-coffee);
 }

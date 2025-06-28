@@ -1,54 +1,41 @@
 const passwordInput = document.getElementById('password');
-const openEyes = document.querySelector('.monkey-open-eyes');
-const closeEyes = document.querySelector('.monkey-close-eyes');
-const wowed = document.querySelector('.monkey-wowed');
-const showPassword = document.getElementById('show-pass');
-const hidePassword = document.getElementById('hide-pass');
+const monkeyStates = {
+  open: document.querySelector('.monkey-open-eyes'),
+  close: document.querySelector('.monkey-close-eyes'),
+  wowed: document.querySelector('.monkey-wowed'),
+};
+const toggleButtons = {
+  show: document.getElementById('show-pass'),
+  hide: document.getElementById('hide-pass'),
+};
+
+function showMonkey(state) {
+  Object.values(monkeyStates).forEach(monkey => monkey.classList.remove('active'));
+  monkeyStates[state]?.classList.add('active');
+}
+
+function togglePasswordVisibility(show) {
+  passwordInput.type = show ? 'text' : 'password';
+  toggleButtons.show.classList.toggle('active', !show);
+  toggleButtons.hide.classList.toggle('active', show);
+  showMonkey(show ? 'wowed' : (document.activeElement === passwordInput ? 'close' : 'open'));
+}
+
+function updateToggleButtons() {
+  const hasText = passwordInput.value.length > 0;
+  toggleButtons.show.classList.toggle('active', !hasText);
+  toggleButtons.hide.classList.toggle('active', hasText);
+}
 
 passwordInput.addEventListener('focus', () => {
-  if (passwordInput.type === 'password') {
-    showMonkey(closeEyes);
-  }
+  if (passwordInput.type === 'password') showMonkey('close');
 });
 
 passwordInput.addEventListener('blur', () => {
-  if (passwordInput.type === 'password') {
-    showMonkey(openEyes);
-  }
+  if (passwordInput.type === 'password') showMonkey('open');
 });
 
-passwordInput.addEventListener('input', () => {
-  if (passwordInput.value.length > 0) {
-    showPassword.classList.remove('active');
-    hidePassword.classList.add('active');
-  } else {
-    showPassword.classList.remove('active');
-    hidePassword.classList.remove('active');
-  }
-});
+passwordInput.addEventListener('input', updateToggleButtons);
 
-showPassword.addEventListener('click', () => {
-  passwordInput.type = 'text';
-  showPassword.classList.remove('active');
-  hidePassword.classList.add('active');
-  showMonkey(wowed);
-});
-
-hidePassword.addEventListener('click', () => {
-  passwordInput.type = 'password';
-  showPassword.classList.add('active');
-  hidePassword.classList.remove('active');
-
-  if (document.activeElement === passwordInput) {
-    showMonkey(closeEyes);
-  } else {
-    showMonkey(openEyes);
-  }
-});
-
-function showMonkey(monkeyToShow) {
-  openEyes.classList.remove('active');
-  closeEyes.classList.remove('active');
-  wowed.classList.remove('active');
-  monkeyToShow.classList.add('active');
-}
+toggleButtons.show.addEventListener('click', () => togglePasswordVisibility(true));
+toggleButtons.hide.addEventListener('click', () => togglePasswordVisibility(false));

@@ -56,6 +56,12 @@
   --color-bg-white: #EDEDED;
   --color-light: #FAFAFA;
   --color-white: #FFFFFF;
+  --color-black: #000;
+  --color-gradient-jet: linear-gradient(
+    to bottom right, 
+    hsla(240, 1%, 18%, 0.251) 0%, 
+    hsla(240, 2%, 11%, 0) 100%
+  ), hsl(240, 2%, 13%);
 
   /* ANIMATIONS */
   --animation-shake: shake;
