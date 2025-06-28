@@ -27,6 +27,14 @@
   src: url(./fonts/DancingScript/static/DancingScript-Regular.ttf);
 }
 
+@keyframes shake {
+  0%   { transform: rotate(0deg); }
+  25%  { transform: rotate(10deg); }
+  50%  { transform: rotate(-10deg); }
+  75%  { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
+}
+
 :root {
   /* FONTS */
   --Poppins-Black: 'Poppins-Black';
@@ -39,9 +47,16 @@
 
   /* COLORS */
   --color-primary: #690f0f;
+  --color-light-primary: rgba(105, 15, 15, 0.5);
   --color-white-shadow: #7E7E7D;
+  --color-invisible-shadow: rgba(0, 0, 0, 0.2);
   --color-input-text: #545454;
-  --color-light-coffee: #EFC3A4;
-  --color-dark-coffee: #4B1F0E;
+  --color-coffee: #E0C9A6;
   --color-beige: #9e7d74;
+  --color-bg-white: #EDEDED;
+  --color-light: #FAFAFA;
+  --color-white: #FFFFFF;
+
+  /* ANIMATIONS */
+  --animation-shake: shake;
 }
