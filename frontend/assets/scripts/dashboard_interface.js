@@ -7,8 +7,7 @@ const refs = {
     addCourse: getById("add-course-modal"),
     viewCourse: getById("view-course-modal"),
     faculty: getById("faculty-modal"),
-    addFaculty: getById("add-faculty-modal"),
-    delete: getById("delete-modal")
+    addFaculty: getById("add-faculty-modal")
   },
   inputs: {
     courseCode: getById("course-code-input"),
@@ -26,10 +25,6 @@ const refs = {
     facultyUpload: getById("upload-faculty-img"),
     facultyPreview: getById("faculty-preview")
   },
-  spans: {
-    name: getById("faculty-to-delete-name"),
-    entity: getById("entity-context")
-  },
   buttons: {
     seeAllCourses: getById("see-all-courses"),
     closeViewCourses: getById("close-view-courses-modal"),
@@ -40,13 +35,10 @@ const refs = {
     viewFaculty: getById("view-faculty"),
     closeFaculty: getById("close-faculty-modal"),
     deleteFacultyBulk: getById("delete-selected-faculty-btn"),
-    deleteCoursesBulk: getById("delete-selected-courses-btn"),
-    cancelDelete: getById("cancel-delete"),
-    confirmDelete: getById("confirm-delete")
+    deleteCoursesBulk: getById("delete-selected-courses-btn")
   }
 };
 
-// =================== MODAL TOGGLE ===================
 function toggleModals() {
   const { buttons: b, modals: m } = refs;
   b.seeAllCourses.addEventListener("click", () => m.viewCourses.classList.add("active"));
@@ -65,7 +57,6 @@ function toggleModals() {
   );
 }
 
-// =================== MODAL CLEAR ===================
 function clearCourseModal() {
   refs.modals.addCourse.classList.remove("active");
   Object.values(refs.inputs).slice(0, 5).forEach(input => input.value = "");
@@ -73,34 +64,12 @@ function clearCourseModal() {
 
 function clearFacultyModal() {
   refs.modals.addFaculty.classList.remove("active");
-
   refs.inputs.facultyName.value = "";
   refs.inputs.facultyId.value = "";
   refs.inputs.facultyJobTitle.value = "";
   refs.inputs.facultyDept.value = "";
   refs.inputs.facultyEducation.value = "";
-
   refs.images.facultyPreview.src = "./assets/media/blank-profile-picture-973460.svg";
-}
-
-// =================== INITIALIZE ===================
-function init() {
-  toggleModals();
-  bindCheckboxBulk(".faculty-modal", "select-all-faculties", refs.buttons.deleteFacultyBulk, ".table-actions");
-  bindCheckboxBulk(".courses-cont", "select-all-courses", refs.buttons.deleteCoursesBulk, ".courses-cont .table-actions");
-
-  bindEditButtons(".edit-faculty", refs.modals.addFaculty, refs.inputs, extractFacultyData);
-  bindEditButtons(".edit-courses", refs.modals.addCourse, refs.inputs, extractCourseData);
-
-  bindBulkDelete(".faculty-modal", refs.buttons.deleteFacultyBulk, ".faculty-modal .header h1");
-  bindBulkDelete(".courses-cont", refs.buttons.deleteCoursesBulk, ".courses-cont .header h1");
-
-  getAll(".delete-faculty").forEach(btn => btn.addEventListener("click", () => handleDelete(btn, ".faculty-modal")));
-  getAll(".delete-courses").forEach(btn => btn.addEventListener("click", () => handleDelete(btn, ".courses-cont")));
-  refs.buttons.cancelDelete.addEventListener("click", closeDeleteModal);
-  refs.buttons.confirmDelete.addEventListener("click", confirmDelete);
-
-  refs.images.facultyUpload.addEventListener("change", previewImage);
 }
 
 function bindCheckboxBulk(container, allId, deleteBtn, actionsSelector) {
@@ -130,7 +99,9 @@ function bindEditButtons(selector, modal, inputs, extractDataFn) {
       Object.entries(data).forEach(([k, v]) => {
         if (inputs[k]) inputs[k].value = v;
       });
-      if (data.image && refs.images.facultyPreview) refs.images.facultyPreview.src = data.image;
+      if (data.image && refs.images.facultyPreview) {
+        refs.images.facultyPreview.src = data.image;
+      }
       modal.classList.add("active");
     });
   });
@@ -159,38 +130,6 @@ function extractCourseData(row) {
   };
 }
 
-let rowToDelete = null;
-
-function handleDelete(btn, containerSelector) {
-  rowToDelete = btn.closest("tr");
-  refs.spans.name.textContent = rowToDelete.querySelector("td").textContent.trim().split("\n").pop().trim();
-  refs.spans.entity.textContent =
-    btn.closest(containerSelector).querySelector(".header h1")?.textContent.trim() || "Item";
-  refs.modals.delete.classList.add("active");
-}
-
-function bindBulkDelete(container, deleteBtn, headerSelector) {
-  deleteBtn.addEventListener("click", e => {
-    e.preventDefault();
-    const selected = [...getAll(`${container} tbody input[type='checkbox']:checked`)];
-    if (!selected.length) return;
-    rowToDelete = selected.map(cb => cb.closest("tr"));
-    refs.spans.name.textContent = `this ${selected.length} item/s`;
-    refs.spans.entity.textContent = document.querySelector(headerSelector)?.textContent.trim() || "Items";
-    refs.modals.delete.classList.add("active");
-  });
-}
-
-function closeDeleteModal() {
-  refs.modals.delete.classList.remove("active");
-  rowToDelete = null;
-}
-
-function confirmDelete() {
-  (Array.isArray(rowToDelete) ? rowToDelete : [rowToDelete]).forEach(row => row?.remove());
-  closeDeleteModal();
-}
-
 function previewImage(e) {
   const file = e.target.files[0];
   if (file) {
@@ -198,6 +137,41 @@ function previewImage(e) {
     reader.onload = evt => refs.images.facultyPreview.src = evt.target.result;
     reader.readAsDataURL(file);
   }
+}
+
+import { setupDeleteModal, bindDeleteButtons } from './delete_modal.js';
+
+function init() {
+  toggleModals();
+  bindCheckboxBulk(".faculty-modal", "select-all-faculties", refs.buttons.deleteFacultyBulk, ".table-actions");
+  bindCheckboxBulk(".courses-cont", "select-all-courses", refs.buttons.deleteCoursesBulk, ".courses-cont .table-actions");
+
+  bindEditButtons(".edit-faculty", refs.modals.addFaculty, refs.inputs, extractFacultyData);
+  bindEditButtons(".edit-courses", refs.modals.addCourse, refs.inputs, extractCourseData);
+
+  refs.images.facultyUpload.addEventListener("change", previewImage);
+
+  const { openDeleteModal } = setupDeleteModal({
+    deleteModal: document.getElementById("delete-modal"),
+    deleteNameSpan: document.getElementById("faculty-to-delete-name"),
+    deleteEntitySpan: document.getElementById("entity-context"),
+    cancelButton: document.getElementById("cancel-delete"),
+    confirmButton: document.getElementById("confirm-delete")
+  });
+
+  bindDeleteButtons({
+    tableSelector: ".faculty-modal",
+    bulkDeleteButton: refs.buttons.deleteFacultyBulk,
+    headerSelector: ".faculty-modal .header h1",
+    openDeleteModal
+  });
+
+  bindDeleteButtons({
+    tableSelector: ".courses-cont",
+    bulkDeleteButton: refs.buttons.deleteCoursesBulk,
+    headerSelector: ".courses-cont .header h1",
+    openDeleteModal
+  });
 }
 
 init();
