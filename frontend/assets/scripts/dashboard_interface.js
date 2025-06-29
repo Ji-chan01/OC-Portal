@@ -46,6 +46,7 @@ const refs = {
   }
 };
 
+// =================== MODAL TOGGLE ===================
 function toggleModals() {
   const { buttons: b, modals: m } = refs;
   b.seeAllCourses.addEventListener("click", () => m.viewCourses.classList.add("active"));
@@ -59,9 +60,12 @@ function toggleModals() {
   b.closeAddFaculty.addEventListener("click", clearFacultyModal);
 
   getById("close-view-course-modal").addEventListener("click", () => m.viewCourse.classList.remove("active"));
-  getAll(".view-spcfc-course").forEach(btn => btn.addEventListener("click", () => m.viewCourse.classList.add("active")));
+  getAll(".view-spcfc-course").forEach(btn =>
+    btn.addEventListener("click", () => m.viewCourse.classList.add("active"))
+  );
 }
 
+// =================== MODAL CLEAR ===================
 function clearCourseModal() {
   refs.modals.addCourse.classList.remove("active");
   Object.values(refs.inputs).slice(0, 5).forEach(input => input.value = "");
@@ -79,9 +83,9 @@ function clearFacultyModal() {
   refs.images.facultyPreview.src = "./assets/media/blank-profile-picture-973460.svg";
 }
 
+// =================== INITIALIZE ===================
 function init() {
   toggleModals();
-  setupPageNavigation();
   bindCheckboxBulk(".faculty-modal", "select-all-faculties", refs.buttons.deleteFacultyBulk, ".table-actions");
   bindCheckboxBulk(".courses-cont", "select-all-courses", refs.buttons.deleteCoursesBulk, ".courses-cont .table-actions");
 
@@ -97,7 +101,6 @@ function init() {
   refs.buttons.confirmDelete.addEventListener("click", confirmDelete);
 
   refs.images.facultyUpload.addEventListener("change", previewImage);
-  bindCardNavigation();
 }
 
 function bindCheckboxBulk(container, allId, deleteBtn, actionsSelector) {
@@ -124,7 +127,9 @@ function bindEditButtons(selector, modal, inputs, extractDataFn) {
     btn.addEventListener("click", () => {
       const row = btn.closest("tr");
       const data = extractDataFn(row);
-      Object.entries(data).forEach(([k, v]) => inputs[k] && (inputs[k].value = v));
+      Object.entries(data).forEach(([k, v]) => {
+        if (inputs[k]) inputs[k].value = v;
+      });
       if (data.image && refs.images.facultyPreview) refs.images.facultyPreview.src = data.image;
       modal.classList.add("active");
     });
@@ -159,7 +164,8 @@ let rowToDelete = null;
 function handleDelete(btn, containerSelector) {
   rowToDelete = btn.closest("tr");
   refs.spans.name.textContent = rowToDelete.querySelector("td").textContent.trim().split("\n").pop().trim();
-  refs.spans.entity.textContent = btn.closest(containerSelector).querySelector(".header h1")?.textContent.trim() || "Item";
+  refs.spans.entity.textContent =
+    btn.closest(containerSelector).querySelector(".header h1")?.textContent.trim() || "Item";
   refs.modals.delete.classList.add("active");
 }
 
@@ -169,7 +175,7 @@ function bindBulkDelete(container, deleteBtn, headerSelector) {
     const selected = [...getAll(`${container} tbody input[type='checkbox']:checked`)];
     if (!selected.length) return;
     rowToDelete = selected.map(cb => cb.closest("tr"));
-    refs.spans.name.textContent = `${selected.length} selected`;
+    refs.spans.name.textContent = `this ${selected.length} item/s`;
     refs.spans.entity.textContent = document.querySelector(headerSelector)?.textContent.trim() || "Items";
     refs.modals.delete.classList.add("active");
   });
@@ -192,46 +198,6 @@ function previewImage(e) {
     reader.onload = evt => refs.images.facultyPreview.src = evt.target.result;
     reader.readAsDataURL(file);
   }
-}
-
-function setupPageNavigation() {
-  const navLinks = getAll(".nav a[data-page]");
-  const pages = getAll(".page");
-  navLinks.forEach(link => {
-    link.addEventListener("click", e => {
-      e.preventDefault();
-      const target = link.dataset.page;
-      navLinks.forEach(l => l.classList.toggle("active", l.dataset.page === target));
-      pages.forEach(p => p.classList.toggle("active", p.id === target));
-    });
-  });
-}
-
-function bindCardNavigation() {
-  const cardBindings = {
-    "total-students-card": "students",
-    "failing-students-card": "students",
-    "deans-listers-card": "deans-listers"
-  };
-  Object.entries(cardBindings).forEach(([cardId, pageId]) => {
-    const card = getById(cardId);
-    if (card) {
-      card.addEventListener("click", () => {
-        getAll(".nav a[data-page]").forEach(link => {
-          link.classList.toggle("active", link.dataset.page === pageId);
-        });
-        getAll(".page").forEach(page => {
-          page.classList.toggle("active", page.id === pageId);
-        });
-      });
-    }
-  });
-  getById("see-all-officers")?.addEventListener("click", e => {
-    e.preventDefault();
-    const targetPage = "organizations";
-    getAll(".nav a[data-page]").forEach(link => link.classList.toggle("active", link.dataset.page === targetPage));
-    getAll(".page").forEach(page => page.classList.toggle("active", page.id === targetPage));
-  });
 }
 
 init();

@@ -7,8 +7,9 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-  <link rel="stylesheet" href="./assets/styles/general.css">
-  <link rel="stylesheet" href="./assets/styles/sis_interface.css">
+  <link rel="stylesheet" href="./assets/styles/general_style/general.css">
+  <link rel="stylesheet" href="./assets/styles/general_style/homepage-nav-headers.css">
+  <link rel="stylesheet" href="./assets/styles/dashboard_interface.css">
 </head>
 <body>
   <main>
@@ -18,16 +19,13 @@
         <p>Student Information System</p>
       </div>
       <nav>
-        <ul>
-          <ul class="nav">
-  <li><a href="#" class="active" data-page="dashboard"><i class="fa-solid fa-grip"></i> Dashboard</a></li>
-  <li><a href="#" data-page="students"><i class="fa-solid fa-user-graduate"></i> Students</a></li>
-  <li><a href="#" data-page="deans-listers"><i class="fa-solid fa-award"></i> Dean's Listers</a></li>
-  <li><a href="#" data-page="organizations"><i class="fa-solid fa-users"></i> Organization & Clubs</a></li>
-  <li><a href="#" data-page="documents"><i class="fa-regular fa-file-word"></i> Document Tools</a></li>
-  <li><a href="#" data-page="reports"><i class="fa-solid fa-chart-line"></i> Reports</a></li>
-</ul>
-
+        <ul class="nav">
+					<li><a href="dashboard_interface.html" data-page="dashboard"><i class="fa-solid fa-grip"></i> Dashboard</a></li>
+					<li><a href="students_interface.html" data-page="students"><i class="fa-solid fa-user-graduate"></i> Students</a></li>
+					<li><a href="deanslisters_interface.html" data-page="deans-listers"><i class="fa-solid fa-award"></i> Dean's Listers</a></li>
+					<li><a href="org_clubs_interface.html" data-page="organizations"><i class="fa-solid fa-users"></i> Organization & Clubs</a></li>
+					<li><a href="documents_interface.html" data-page="documents"><i class="fa-regular fa-file-word"></i> Document Tools</a></li>
+					<li><a href="#" class="active" data-page="reports"><i class="fa-solid fa-chart-line"></i> Reports</a></li>
         </ul>
       </nav>
     </aside>
@@ -54,171 +52,8 @@
             </button>
           </div>
         </div>
-        
-      <div class="page active" id="dashboard">
-        <div class="cards">
-          <div class="card" id="total-students-card">
-            <div class="img-cont">
-              <img src="./assets/media/icons8-student-100.png" alt="">
-            </div>
-            <div class="infos">
-              <h2>Total Students</h2>
-              <h1>2,342</h1>
-            </div>
-          </div>
-          <div class="card" id="failing-students-card">
-            <div class="img-cont">
-              <img src="./assets/media/icons8-decrease-100.png" alt="">
-            </div>
-            <div class="infos">
-              <h2>Failing Students</h2>
-              <h1>430</h1>
-            </div>
-          </div>
-          <div class="card" id="deans-listers-card">
-            <div class="img-cont">
-              <img src="./assets/media/icons8-award-100.png" alt="">
-            </div>
-            <div class="infos">
-              <h2>Dean's Listers</h2>
-              <h1>342</h1>
-            </div>
-          </div>
-        </div>
-  
-        <div class="middle">
-          <div class="left">
-            <div class="top-cards">
-              <div class="header">
-                <h1>Officers</h1>
-                <a id="see-all-officers" href="">See all</a>
-              </div>
-              <div class="officers-cont">
-                <div class="officer-card">
-                  <div class="img-cont">
-                    <img src="./assets/media/blank-profile-picture-973460.svg" alt="">
-                  </div>
-                  <div class="info">
-                    <h3>Juan Dela Cruz</h3>
-                    <p>CCSSO-President</p>
-                  </div>
-                </div>
-                <div class="officer-card">
-                  <div class="img-cont">
-                    <img src="./assets/media/blank-profile-picture-973460.svg" alt="">
-                  </div>
-                  <div class="info">
-                    <h3>Juana Dela Cruz</h3>
-                    <p>CCSSO-Vice President</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-  
-            <div class="bot-cards">
-              <div class="header">
-                <h1>Courses</h1>
-                <a id="see-all-courses" href="#">See all</a>
-              </div>
-              <div class="course-cont">
-                <div class="course-card">
-                  <div class="left">
-                    <p>Object Oriented Programming</p>
-                    <button class="view-spcfc-course">View</button>
-                  </div>
-                  <div class="right-course">
-                    <i class="fa-solid fa-laptop"></i>
-                  </div>
-                </div>
-    
-                <div class="course-card">
-                  <div class="left">
-                    <p>Productivity Tools & Computing</p>
-                    <button class="view-spcfc-course">View</button>
-                  </div>
-                  <div class="right-course">
-                    <i class="fa-solid fa-laptop"></i>
-                  </div>
-                </div>
-              </div>
-  
-            </div>
-          </div>
-  
-          <div class="right">  
-            <div class="top">
-              <div class="header">
-                <h2>Faculty</h2>
-                <a id="view-faculty" href="#">See all</a>
-              </div>
-  
-              <div class="instructors-cont">
-                <div class="instructor">
-                  <div class="img-cont">
-                    <img src="./assets/media/blank-profile-picture-973460.svg" alt="">
-                  </div>
-                  <div class="info">
-                    <h3>Engr. Violeta Monticalvo</h3>
-                    <p>Dean</p>
-                  </div>
-                </div>
-                <div class="instructor">
-                  <div class="img-cont">
-                    <img src="./assets/media/blank-profile-picture-973460.svg" alt="">
-                  </div>
-                  <div class="info">
-                    <h3>Engr. Justine Aban</h3>
-                    <p>Instructor</p>
-                  </div>
-                </div>
-                <div class="instructor">
-                  <div class="img-cont">
-                    <img src="./assets/media/blank-profile-picture-973460.svg" alt="">
-                  </div>
-                  <div class="info">
-                    <h3>Ms. Jessica Anave</h3>
-                    <p>Instructor</p>
-                  </div>
-                </div>
-                <div class="instructor">
-                  <div class="img-cont">
-                    <img src="./assets/media/blank-profile-picture-973460.svg" alt="">
-                  </div>
-                  <div class="info">
-                    <h3>Mr. Joel Salidaga</h3>
-                    <p>Instructor</p>
-                  </div>
-                </div>
-                <div class="instructor">
-                  <div class="img-cont">
-                    <img src="./assets/media/blank-profile-picture-973460.svg" alt="">
-                  </div>
-                  <div class="info">
-                    <h3>Ms. Jovelyn Patalinhug</h3>
-                    <p>Teaching Assistant</p>
-                  </div>
-                </div>
-              </div>
-  
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="page students " id="students">
-        <i>This is student page</i>
-      </div>
-
-      <div class="page deans-listers " id="deans-listers">
-        <i>This is deans-listers page</i>
-      </div>
-      <div class="page organizations " id="organizations">
-        <i>This is organizations page</i>
-      </div>
-      <div class="page documents " id="documents">
-        <i>This is documents page</i>
-      </div>
-      <div class="page reports " id="reports">
+      <div class="reports " id="reports">
         <i>This is reports page</i>
       </div>
     </section>
@@ -675,6 +510,6 @@
     </div>
   </main>
 
-  <script src="./assets/scripts/sis_interface.js"></script>
+  <script src="./assets/scripts/dashboard_interface.js"></script>
 </body>
 </html>
