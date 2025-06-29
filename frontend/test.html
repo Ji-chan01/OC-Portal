@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Optional reset */
+ul.nav, .submenu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav li {
+  position: relative;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  background-color: #222;
+  border-radius: 0 0 6px 6px;
+  z-index: 1000;
+  min-width: 180px;
+}
+
+.submenu li a {
+  display: block;
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+  background-color: #222;
+  transition: background 0.3s;
+}
+
+.submenu li a:hover {
+  background-color: #333;
+}
+
+/* Show submenu on hover */
+.has-submenu:hover .submenu {
+  display: block;
+}
+
+/* Optional caret spacing */
+.has-submenu > a i.fa-caret-down {
+  margin-left: 8px;
+  font-size: 0.8em;
+}
+
+    </style>
+</head>
+<body>
+    <ul class="nav">
+  <li>
+    <a href="#" class="active" data-page="dashboard">
+      <i class="fa-solid fa-grip"></i> Dashboard
+    </a>
+  </li>
+
+  <li class="has-submenu">
+    <a href="#" data-page="students">
+      <i class="fa-solid fa-user-graduate"></i> Students <i class="fa-solid fa-caret-down"></i>
+    </a>
+    <ul class="submenu">
+      <li><a href="students_interface.html">List of Students</a></li>
+      <li><a href="sections_interface.html">Sections</a></li>
+      <li><a href="subjects_interface.html">Subjects</a></li>
+    </ul>
+  </li>
+
+  <li>
+    <a href="deanslisters_interface.html" data-page="deans-listers">
+      <i class="fa-solid fa-award"></i> Dean's Listers
+    </a>
+  </li>
+  <li>
+    <a href="org_clubs_interface.html" data-page="organizations">
+      <i class="fa-solid fa-users"></i> Organization & Clubs
+    </a>
+  </li>
+  <li>
+    <a href="documents_interface.html" data-page="documents">
+      <i class="fa-regular fa-file-word"></i> Document Tools
+    </a>
+  </li>
+  <li>
+    <a href="reports_interface.html" data-page="reports">
+      <i class="fa-solid fa-chart-line"></i> Reports
+    </a>
+  </li>
+</ul>
+
+</body>
+</html>

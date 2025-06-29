@@ -48,6 +48,7 @@
   /* COLORS */
   --color-primary: #690f0f;
   --color-light-primary: rgba(105, 15, 15, 0.5);
+  --color-dark-primary: #551010;
   --color-white-shadow: #7E7E7D;
   --color-invisible-shadow: rgba(0, 0, 0, 0.2);
   --color-input-text: #545454;

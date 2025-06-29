@@ -103,6 +103,10 @@
   color: var(--color-white);
   font-family: var(--Poppins-Bold);
   font-size: 1rem;
+  max-width: 185px;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden
 }
 
 .dashboard .middle .left .top-cards .officers-cont .officer-card p {
@@ -215,6 +219,10 @@
 .middle .right .top .instructors-cont .instructor .info h3 {
   font-family: var(--Poppins-Bold);
   font-size: 1rem;
+  max-width: 220px;
+  overflow: hidden;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
 }
 
 .middle .right .top .instructors-cont .instructor .info p {

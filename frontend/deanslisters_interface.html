@@ -21,12 +21,47 @@
       </div>
       <nav>
         <ul class="nav">
-					<li><a href="dashboard_interface.html" data-page="dashboard"><i class="fa-solid fa-grip"></i> Dashboard</a></li>
-					<li><a href="students_interface.html" data-page="students"><i class="fa-solid fa-user-graduate"></i> Students</a></li>
-					<li><a href="#" class="active" data-page="deans-listers"><i class="fa-solid fa-award"></i> Dean's Listers</a></li>
-					<li><a href="org_clubs_interface.html" data-page="organizations"><i class="fa-solid fa-users"></i> Organization & Clubs</a></li>
-					<li><a href="documents_interface.html" data-page="documents"><i class="fa-regular fa-file-word"></i> Document Tools</a></li>
-					<li><a href="reports_interface.html" data-page="reports"><i class="fa-solid fa-chart-line"></i> Reports</a></li>
+          <li>
+            <a href="dashboard_interface.html" data-page="dashboard"><i class="fa-solid fa-grip"></i> Dashboard</a>
+          </li>
+          <li>
+            <a class="student-nav" href="#" >
+              <div class="sides">
+                <i class="fa-solid fa-user-graduate"></i> Students
+              </div>
+              <i class="arrow-down fa-solid fa-angle-down"></i>
+            </a>
+            <ul class="submenu">
+              <li>
+                <a class="submenu-link" href="students_interface.html">
+                  List of Students <i class="fa-solid fa-chevron-right"></i>
+                </a>
+              </li>
+              <li>
+                <a class="submenu-link" href="sections_interface.html">
+                  Sections <i class="fa-solid fa-chevron-right"></i>
+                </a>
+                </li>
+              <li>
+                <a class="submenu-link" href="subjects_interface.html">
+                  Subjects
+                  <i class="fa-solid fa-chevron-right"></i>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a class="nav-link active" href="#"><i class="fa-solid fa-award"></i> Dean's Listers</a>
+          </li>
+          <li>
+            <a href="org_clubs_interface.html" data-page="organizations"><i class="fa-solid fa-users"></i> Organization & Clubs</a>
+          </li>
+          <li>
+            <a href="documents_interface.html" data-page="documents"><i class="fa-regular fa-file-word"></i> Document Tools</a>
+          </li>
+          <li>
+            <a href="reports_interface.html" data-page="reports"><i class="fa-solid fa-chart-line"></i> Reports</a>
+          </li>
         </ul>
       </nav>
     </aside>
@@ -76,6 +111,6 @@
     </div>
   </main>
 
-  <script src="./assets/scripts/dashboard_interface.js"></script>
+  <script src="./assets/scripts/student_btn.js"></script>
 </body>
 </html>

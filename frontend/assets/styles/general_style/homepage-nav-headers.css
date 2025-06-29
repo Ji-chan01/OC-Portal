@@ -39,10 +39,11 @@ aside ul li a {
   gap: 0.5rem;
   font-family: var(--Poppins-Regular);
   position: relative;
+  z-index: 1;
 }
 
-aside ul li a:hover::before,
-aside ul li a.active::before {
+aside ul li a:not(.submenu-link):hover::before,
+aside ul li a:not(.submenu-link).active::before {
   position: absolute;
   content: "";
   top: 0;
@@ -54,10 +55,30 @@ aside ul li a.active::before {
   border-bottom-right-radius: 40%;
 }
 
-aside ul li a.active {
+aside ul li a.active,
+aside ul li a.clicked {
   background: var(--color-bg-white);
   color: var(--color-primary);
   padding-left: 1.5rem;
+}
+
+
+aside ul .submenu-link:hover,
+aside ul .submenu-link.active {
+  background: #5C1212;
+  color: var(--color-bg-white);
+}
+
+aside ul .submenu-link:hover i,
+aside ul .submenu-link.active i {
+  color: var(--color-bg-white);
+}
+
+
+aside .nav-link,
+aside .nav-link i {
+  background: var(--color-bg-white) !important;
+  color: var(--color-primary) !important;
 }
 
 aside ul li a:hover {
@@ -76,8 +97,65 @@ aside ul li a:hover i {
 }
 
 aside ul li a:hover i {
+  color: var(--color-primary); 
+}
+
+aside .submenu {
+  background: var(--color-dark-primary);
+  height: 1px;
+  transition: all 0.1s ease;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-90px);
+}
+
+aside .submenu.active {
+  height: auto;
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+
+aside .student-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+aside .student-nav.clicked i {
+  color: var(--color-white);
+}
+
+aside .student-nav.clicked {
+  background: var(--color-dark-primary);
+  color: var(--color-white);
+}
+
+aside .student-nav .arrow-down {
+  opacity: 0;
+  transition: all 0.1s ease;
+}
+
+aside .student-nav .arrow-down.active {
+  animation: var(--animation-shake) 1s ease 2;
+  opacity: 1;
+}
+
+aside .submenu a {
+  padding: 0.2rem 3rem;
+  padding-right: 0.5rem;
+}
+
+aside .submenu .submenu-link {
+  display: flex;
+  justify-content: space-between;
+}
+
+aside .submenu .submenu-link i {
+  color: var(--color-dark-primary);
+}
+
+aside .submenu .submenu-link i:hover {
   color: var(--color-primary);
-  
 }
 
 section {
@@ -112,7 +190,7 @@ section .header .right-sec {
   gap: 0.5rem;
 }
 
-section .header .right-sec .home {
+section .header .right-sec a {
   padding: 0.5rem;
   font-size: 0.9rem;
   border-radius: 50%;
@@ -121,7 +199,7 @@ section .header .right-sec .home {
   box-shadow: 0 0 0.2rem var(--color-primary);
 }
 
-section .header .right-sec .home:hover {
+section .header .right-sec a:hover {
   color: var(--color-primary);
   background: transparent;
 }
